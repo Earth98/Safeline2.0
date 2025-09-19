@@ -1,0 +1,6 @@
+@Safeline2._0.Server_HostAddress = http://localhost:5016
+
+GET {{Safeline2._0.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

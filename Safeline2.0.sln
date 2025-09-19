@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "safeline2.0.client", "safeline2.0.client\safeline2.0.client.esproj", "{568A8F61-FF38-682B-9A39-453AEF95C004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safeline2.0.Server", "Safeline2.0.Server\Safeline2.0.Server.csproj", "{9984DEBC-C13E-4701-AC94-6C644AF312FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568A8F61-FF38-682B-9A39-453AEF95C004}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9984DEBC-C13E-4701-AC94-6C644AF312FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9984DEBC-C13E-4701-AC94-6C644AF312FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9984DEBC-C13E-4701-AC94-6C644AF312FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9984DEBC-C13E-4701-AC94-6C644AF312FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7D519A9-006C-45D4-AF60-0416D0234A55}
+	EndGlobalSection
+EndGlobal
