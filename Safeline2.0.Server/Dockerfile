@@ -12,6 +12,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# Install Node.js (LTS version)
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+    && apt-get install -y nodejs
+
 COPY ["Safeline2.0.Server/Safeline2.0.Server.csproj", "Safeline2.0.Server/"]
 COPY ["safeline2.0.client/safeline2.0.client.esproj", "safeline2.0.client/"]
 RUN dotnet restore "./Safeline2.0.Server/Safeline2.0.Server.csproj"
