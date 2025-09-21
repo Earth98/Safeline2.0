@@ -1,4 +1,13 @@
-﻿#root {
+﻿/* Blinking dot animation for WelcomeBox */
+.blink-dot {
+    animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+#root {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
