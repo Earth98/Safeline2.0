@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { AdminChat } from './Copmonent/Chat/Chat';
 
 function App() {
     const [forecasts, setForecasts] = useState();
@@ -33,6 +34,7 @@ function App() {
 
     return (
         <div>
+            <AdminChat/>
             <h1 id="tableLabel">Weather forecast</h1>
             <p>This component demonstrates fetching data from the server.</p>
             {contents}

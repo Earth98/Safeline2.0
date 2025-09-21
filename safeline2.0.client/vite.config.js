@@ -50,7 +50,13 @@ export default defineConfig({
             '^/weatherforecast': {
                 target,
                 secure: false
-            }
+            },
+            '/safeLine': {
+                target,
+                ws: true,
+                secure: false,
+                changeOrigin: true
+            },
         },
         port: parseInt(env.DEV_SERVER_PORT || '59577'),
         https: {
