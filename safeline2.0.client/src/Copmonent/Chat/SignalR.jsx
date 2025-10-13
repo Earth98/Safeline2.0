@@ -1,8 +1,11 @@
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import React, { useEffect, useState } from 'react'
+import { setHub } from '../Storage/Slice/SignlaR';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useSignal = () => {
-    const [connection, setConnection] = useState(null);
+    const { hub: connection } = useSelector(state => state.SignalR);
+    const dispatch = useDispatch();
     const [messages, setMessages] = useState([]);
     const [Details, setDetails] = useState({
         Joined: false,
@@ -10,20 +13,17 @@ export const useSignal = () => {
         Name: "",
         UserName: ""
     });
-    console.log("channel state", Details);
     useEffect(() => {
         const connect = new HubConnectionBuilder()
             .withUrl(`${window.location.origin}/safeLine`) // backend URL
             .build();
 
         connect.start().then(() => {
-            console.log("Connected to SafeLine chatHub");
             connect.on("ReceiveMessage", (user, message) => {
                 setMessages((prev) => [...prev, { user, message }]);
             });
         });
-        console.log("Chat connection established", connect);
-        setConnection(connect);
+        dispatch(setHub(connect));
     }, []);
 
     const sendMessage = async (input, callback = () => {}) => {

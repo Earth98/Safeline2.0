@@ -31,7 +31,7 @@ export const useSecret = () => {
     const [seacrates, setSeacrates] = useState(defultSecret);
     useEffect(() => {
         if (seacrates.status === T.IdleDeadline) {
-            setSeacrates({ ...seacrates, status: T.Idle });
+            setSeacrates({ ...seacrates, status: T.Ideal });
             return;
         }
         return;

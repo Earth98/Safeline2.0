@@ -1,12 +1,13 @@
 export const StatusEnum = {
     IdleDeadline: 'idleDeadline',
-    Idle: 'idle',
+    Ideal: 'Ideal',
     Loading: 'loading',
+    Loaded: 'loaded',
     Success: 'success',
     Error: 'error'
 };
 export const safelineStepEnum = {
-    Idle: 'idle',
+    Ideal: 'Ideal',
     Welcome: 'welcome',
     Userdetails: 'userdetails',
     ChatArea: 'chatArea',
