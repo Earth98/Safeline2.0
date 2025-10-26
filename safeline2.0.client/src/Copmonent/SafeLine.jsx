@@ -1,38 +1,64 @@
+
 import React, { Component, useEffect, useState } from "react";
 import { COLOR, Icons } from "./Utils/Constans";
-import { Components  as C} from "./Utils/Components";
-import { safelineStepEnum as SS} from "./Utils/Enum";
+import { Components } from "./Utils/Components";
+import { safelineStepEnum as SS } from "./Utils/Enum";
 
-// Color palette parameter
-
-
-export const SafeLine = ({Channel}) => {
-    const [mode, setMode] = useState("light");
+export const SafeLine = () => {
+    const { SafeLifeStep, Loader } = Components;
+    return <>
+        <Loader />
+        <SafeLifeStep />
+    </>
+};
+export const SafeLineold = ({ Channel }) => {
     const { connection, Details } = Channel;
-    const [safeLineStep, setSafeLineStep] = useState(SS.Idle);
+    const [safeLineStep, setSafeLineStep] = useState(SS.Ideal);
+
     useEffect(() => {
         if (connection) {
             console.log(Details);
             if (Details.Joined && Details.UserName) {
-                setSafeLineStep(SS.ChatArea);    
+                setSafeLineStep(SS.ChatArea);
                 return;
             }
             if (Details.Joined) {
-                setSafeLineStep(SS.Userdetails);    
+                setSafeLineStep(SS.Userdetails);
                 return;
             }
             setSafeLineStep(SS.Welcome);
         }
     }, [safeLineStep, Channel, Details])
 
-    if (safeLineStep === SS.Idle) return <C.Loader />;
+    if (safeLineStep === SS.Ideal) return <C.Loader />;
+    // Redux imports
+
+
     return (
-        <div>
-            <C.Button className="absolute top-4 right-4 px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-gray-900" onClick={() => setMode(mode === "light" ? "dark" : "light")}>Toggle {mode === "light" ? "Dark" : "Light"} Mode</C.Button>
-            <C.Icons className="absolute top-3 left-3" url={Icons.GithubProfileIcon} />
-            {safeLineStep === SS.Welcome && <WelcomeBox mode={mode} Channel={Channel} />}
-            {safeLineStep === SS.Userdetails && <UserDetailsBox mode={mode} Channel={Channel} />}
-            {safeLineStep === SS.ChatArea && <ChatAreaBox mode={mode} Channel={Channel} />}
+        <div className="fixed inset-0 z-0 bg-gradient-to-br from-blue-200 via-purple-200 to-pink-200 overflow-hidden">
+            {/* Overlay for glass effect */}
+            <div className="absolute inset-0 bg-white/30 backdrop-blur-md" />
+            {/* Main layout container */}
+            <div className="relative z-10 w-full h-full flex flex-col items-stretch justify-stretch">
+                {/* Top Bar */}
+                <div className="h-16 flex items-center px-6 rounded-b-2xl bg-white/40 backdrop-blur-lg shadow-lg mb-2">
+                    {/* Top bar content (blank for now) */}
+                    <span className="ml-auto text-xs text-gray-500">{'Mobile'} view</span>
+                </div>
+                {/* Main content: Sidebar + Chat */}
+                <div className="flex-1 flex overflow-hidden">
+                    {/* Left Sidebar */}
+                    <div className="hidden md:flex flex-col w-64 min-w-56 max-w-xs h-full rounded-r-2xl bg-white/40 backdrop-blur-lg shadow-lg mr-2 overflow-y-auto">
+                        {/* Sidebar content (blank for now) */}
+                        hello
+                    </div>
+                    {/* Main Chat Box */}
+                    <div className="flex-1 h-full rounded-2xl bg-white/60 backdrop-blur-lg shadow-lg overflow-y-auto flex flex-col">
+                        {/* Chat box content (blank for now) */}
+                        chat
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
@@ -74,7 +100,7 @@ const WelcomeBox = ({ mode, Channel }) => {
                         onClick={handleJoin}
                         disabled={!InputValue}
                     >
-                        <C.Icons url={Icons.ArrowRight} imageClassName={ "w-6 h-6"} />
+                        <C.Icons url={Icons.ArrowRight} imageClassName={"w-6 h-6"} />
                     </div>
                 </div>
             </div>
@@ -89,7 +115,7 @@ const UserDetailsBox = ({ mode, Channel }) => {
 
     const handleJoin = () => {
         if (InputValue) {
-            setDetails(prev => ({...prev, UserName: InputValue}));
+            setDetails(prev => ({ ...prev, UserName: InputValue }));
         }
     };
 
@@ -121,7 +147,7 @@ const UserDetailsBox = ({ mode, Channel }) => {
                         onClick={handleJoin}
                         disabled={!InputValue}
                     >
-                        <C.Icons url={Icons.ArrowRight} imageClassName={ "w-6 h-6"} />
+                        <C.Icons url={Icons.ArrowRight} imageClassName={"w-6 h-6"} />
                     </div>
                 </div>
             </div>
@@ -138,7 +164,7 @@ const ChatAreaBox = ({ mode, Channel }) => {
     const SendMessage = () => {
         if (input) {
             sendMessage(input, () => setInput(""));
-        }   
+        }
     };
 
     const LeaveChat = () => {
@@ -178,11 +204,10 @@ const ChatAreaBox = ({ mode, Channel }) => {
                         className={`flex ${m.user === Details.UserName ? "justify-end" : "justify-start"}`}
                     >
                         <div
-                            className={`max-w-xs px-4 py-2 rounded-lg shadow ${
-                                m.user === Details.UserName
+                            className={`max-w-xs px-4 py-2 rounded-lg shadow ${m.user === Details.UserName
                                     ? "bg-blue-500 text-white"
                                     : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                            }`}
+                                }`}
                         >
                             <span className="block text-xs font-medium mb-1">
                                 {m.user === Details.UserName ? "You" : m.user}

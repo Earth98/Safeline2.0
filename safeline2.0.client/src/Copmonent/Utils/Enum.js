@@ -1,16 +1,29 @@
 export const StatusEnum = {
     IdleDeadline: 'idleDeadline',
-    Idle: 'idle',
+    Ideal: 'Ideal',
     Loading: 'loading',
+    Loaded: 'loaded',
     Success: 'success',
     Error: 'error'
 };
 export const safelineStepEnum = {
-    Idle: 'idle',
+    Ideal: 'Ideal',
     Welcome: 'welcome',
     Userdetails: 'userdetails',
-    ChatArea: 'chatArea',
+    ChatRooms: 'chatRooms',
     Complete: 'complete'
+};
+
+export const ChatRoomStepEnum = {
+    CreateChat: 'createChat',
+    ChatList : 'chatList',
+    Invite: 'invite',
+    ChatArea : 'chatArea'
+};
+export const ChatRoomStatusEnum = {
+    Invited: 'invited',
+    Online: 'online',
+    Offline: 'offline'
 };
 
 export const SecretModeEnum = {
