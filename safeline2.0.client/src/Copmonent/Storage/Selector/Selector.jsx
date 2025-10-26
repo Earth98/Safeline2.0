@@ -7,6 +7,7 @@ export const selectLoader = createSelector(
     state => state.SafelineState,
     (SignalR, SafelineState) =>
         !SignalR.hub ||
+        SafelineState.loader === true ||
         SafelineState.Status === StatusEnum.Loading ||
         SafelineState.Status === StatusEnum.Ideal
 );

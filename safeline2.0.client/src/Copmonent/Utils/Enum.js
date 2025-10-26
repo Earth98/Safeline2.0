@@ -10,8 +10,20 @@ export const safelineStepEnum = {
     Ideal: 'Ideal',
     Welcome: 'welcome',
     Userdetails: 'userdetails',
-    ChatArea: 'chatArea',
+    ChatRooms: 'chatRooms',
     Complete: 'complete'
+};
+
+export const ChatRoomStepEnum = {
+    CreateChat: 'createChat',
+    ChatList : 'chatList',
+    Invite: 'invite',
+    ChatArea : 'chatArea'
+};
+export const ChatRoomStatusEnum = {
+    Invited: 'invited',
+    Online: 'online',
+    Offline: 'offline'
 };
 
 export const SecretModeEnum = {

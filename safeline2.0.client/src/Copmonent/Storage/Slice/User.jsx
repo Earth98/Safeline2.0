@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ChatRoomStatusEnum } from '../../Utils/Enum';
 
 const initialState = {
   NewUser: true,
@@ -7,6 +8,13 @@ const initialState = {
     UserName: ''
   },
   ChatRooms: []
+};
+// Default chat room data
+const ChatRoomsData = {
+  Status: ChatRoomStatusEnum.Invited,
+  ChatRoomID: '',
+  ConversationName: ''
+
 };
 
 const safelineSlice = createSlice({
@@ -21,8 +29,12 @@ const safelineSlice = createSlice({
       state.UserDetail.UserID = ID;
       state.UserDetail.UserName = UserName;
     },
+    CreateChatRoom(state, action) {
+      const { ChatRoomID, ConversationName } = action.payload;
+      state.ChatRooms.push({ ChatRoomID, ConversationName, Status: ChatRoomStatusEnum.Invited });
+    },
   },
 });
 
-export const { SetNewUser, setSecretCode } = safelineSlice.actions;
+export const { SetNewUser, setSecretCode, CreateChatRoom } = safelineSlice.actions;
 export default safelineSlice.reducer;
